@@ -1,14 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://c7d2mtsfxi1r0"]
 
-[ext_resource type="Shader" path="res://shaders/blur.gdshader" id="1_2q5gy"]
-[ext_resource type="Script" path="res://end_screen.gd" id="1_do1m1"]
+[ext_resource type="Script" path="res://scripts/end_screen.gd" id="1_qpnsy"]
+[ext_resource type="Shader" path="res://shaders/blur.gdshader" id="2_f8x27"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dweit"]
-shader = ExtResource("1_2q5gy")
+shader = ExtResource("2_f8x27")
 shader_parameter/amount = 2.174
 
 [node name="end_screen" type="CanvasLayer"]
-script = ExtResource("1_do1m1")
+script = ExtResource("1_qpnsy")
 
 [node name="Blur" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_dweit")
@@ -49,5 +49,22 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 56
 text = "Time: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="State" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = 25.0
+offset_right = 208.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 91
+text = "You Win!"
 horizontal_alignment = 1
 vertical_alignment = 1

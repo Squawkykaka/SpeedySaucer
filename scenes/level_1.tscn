@@ -1,0 +1,103 @@
+[gd_scene load_steps=8 format=3 uid="uid://bq2xtxv2g3fd3"]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_n1yjg"]
+[ext_resource type="Texture2D" uid="uid://d1ju1v1payd02" path="res://assets/purple.png" id="1_uxw2g"]
+[ext_resource type="PackedScene" uid="uid://c65hefip7vpiy" path="res://scenes/player.tscn" id="2_7omxt"]
+[ext_resource type="PackedScene" uid="uid://p6dqykcdqe8p" path="res://scenes/maze.tscn" id="4_d0dyy"]
+[ext_resource type="PackedScene" uid="uid://c7d2mtsfxi1r0" path="res://scenes/end_screen.tscn" id="5_cnmvd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ric6j"]
+size = Vector2(273, 336)
+
+[sub_resource type="GDScript" id="GDScript_0rqkh"]
+script/source = "extends Label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
+	pass
+"
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_n1yjg")
+
+[node name="Graphics" type="Node" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Graphics"]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="Graphics/CanvasLayer"]
+z_index = -100
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_uxw2g")
+stretch_mode = 1
+
+[node name="StartLabel" type="Label" parent="Graphics"]
+offset_left = 504.0
+offset_top = 179.0
+offset_right = 671.0
+offset_bottom = 276.0
+theme_override_font_sizes/font_size = 71
+text = "Start"
+metadata/_edit_use_anchors_ = true
+
+[node name="EndArea" type="Area2D" parent="Graphics"]
+position = Vector2(1976, 150)
+
+[node name="EndLabel" type="Label" parent="Graphics/EndArea"]
+offset_right = 167.0
+offset_bottom = 97.0
+theme_override_font_sizes/font_size = 71
+text = "End
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Graphics/EndArea"]
+position = Vector2(25.5, 46)
+shape = SubResource("RectangleShape2D_ric6j")
+
+[node name="TutorialLabel" type="Label" parent="Graphics"]
+offset_left = 27.0
+offset_top = 28.0
+offset_right = 831.0
+offset_bottom = 625.0
+theme_override_font_sizes/font_size = 36
+text = "Tutorial:
+
+1. WASD For movement
+2. Get to the END Text
+3. You will be reset 
+if you leave the maze"
+metadata/_edit_use_anchors_ = true
+
+[node name="HUD" type="CanvasLayer" parent="Graphics"]
+
+[node name="Timer" type="Label" parent="Graphics/HUD"]
+offset_right = 40.0
+offset_bottom = 23.0
+script = SubResource("GDScript_0rqkh")
+
+[node name="Player" parent="." instance=ExtResource("2_7omxt")]
+z_index = 1
+position = Vector2(580, 311)
+
+[node name="Maze" parent="." instance=ExtResource("4_d0dyy")]
+z_index = -50
+position = Vector2(2171, 301)
+
+[node name="end_screen" parent="." instance=ExtResource("5_cnmvd")]
+visible = false
+
+[connection signal="body_entered" from="Graphics/EndArea" to="." method="_on_end_area_body_entered"]
+[connection signal="body_exited" from="Maze" to="." method="_on_maze_body_exited"]
