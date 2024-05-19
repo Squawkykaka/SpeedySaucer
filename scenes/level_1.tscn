@@ -53,7 +53,7 @@ text = "Start"
 metadata/_edit_use_anchors_ = true
 
 [node name="EndArea" type="Area2D" parent="Graphics"]
-position = Vector2(1976, 150)
+position = Vector2(1976, 321)
 
 [node name="EndLabel" type="Label" parent="Graphics/EndArea"]
 offset_right = 167.0
@@ -101,3 +101,4 @@ visible = false
 
 [connection signal="body_entered" from="Graphics/EndArea" to="." method="_on_end_area_body_entered"]
 [connection signal="body_exited" from="Maze" to="." method="_on_maze_body_exited"]
+[connection signal="reset_button_pressed" from="end_screen" to="." method="_on_end_screen_reset_button_pressed"]

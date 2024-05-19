@@ -3,7 +3,7 @@ extends Node2D
 # the time elapsed since scene start.
 var time_elapsed := 0.0
 
-# wether the timer is stopped or not.
+# whether the timer is stopped or not.
 var is_stopped := false
 
 # Allows quick access to nodes
@@ -51,3 +51,7 @@ func _on_end_area_body_entered(_body):
 	# Display the end screen
 	end_screen.win_game(winning_time)
 	end_screen.visible = true
+
+
+func _on_end_screen_reset_button_pressed():
+	get_tree().reload_current_scene()
