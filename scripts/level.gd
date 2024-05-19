@@ -4,7 +4,7 @@ extends Node2D
 var time_elapsed := 0.0
 
 # whether the timer is stopped or not.
-var is_stopped := false
+var is_stopped := true
 
 # Allows quick access to nodes
 @onready var timer = $Graphics/HUD/Timer
@@ -14,11 +14,13 @@ var is_stopped := false
 
 # runs every frame.
 func _process(delta: float) -> void:
+	# set timer text
+	timer.text = str(time_elapsed).pad_decimals(2)
 	# unless its stopped add the elapsed time since last frame.
 	if !is_stopped:
 		time_elapsed += delta
-		# set that value to the timer text prroperty
-		timer.text = str(time_elapsed).pad_decimals(2)
+	
+	
 
 func stop() -> void:
 	# makes the timer invisiible.
@@ -55,3 +57,8 @@ func _on_end_area_body_entered(_body):
 
 func _on_end_screen_reset_button_pressed():
 	get_tree().reload_current_scene()
+
+
+# When the first movement key is pressed, start the timer.
+func _on_player_move_button_pressed():
+	is_stopped = false

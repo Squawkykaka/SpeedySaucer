@@ -6,6 +6,9 @@ extends RigidBody2D
 var speed : int = 200
 var movement_allowed = true
 
+# Checks when the move button is pressed
+signal move_button_pressed
+
 # runs every physics frame
 func _physics_process(_delta):
 	# if movement is allowed then allow movement
@@ -15,12 +18,16 @@ func movement():
 	# checks if move_up,down,left,right is pressed and applies force in that direction.
 	if Input.is_action_pressed("move_up"):
 		apply_force(Vector2(0,-speed))
+		move_button_pressed.emit()
 	if Input.is_action_pressed("move_down"):
 		apply_force(Vector2(0, speed))
+		move_button_pressed.emit()
 	if Input.is_action_pressed("move_left"):
 		apply_force(Vector2(-speed,0))
+		move_button_pressed.emit()
 	if Input.is_action_pressed("move_right"):
 		apply_force(Vector2(speed,0))
+		move_button_pressed.emit()
 
 # Allow or disallow movement.
 func set_movement(move_allowed : bool):

@@ -100,5 +100,6 @@ position = Vector2(2171, 301)
 visible = false
 
 [connection signal="body_entered" from="Graphics/EndArea" to="." method="_on_end_area_body_entered"]
+[connection signal="move_button_pressed" from="Player" to="." method="_on_player_move_button_pressed"]
 [connection signal="body_exited" from="Maze" to="." method="_on_maze_body_exited"]
 [connection signal="reset_button_pressed" from="end_screen" to="." method="_on_end_screen_reset_button_pressed"]
