@@ -56,6 +56,7 @@ func _on_end_area_body_entered(_body):
 
 
 func _on_end_screen_reset_button_pressed():
+	# Restart the level.
 	get_tree().reload_current_scene()
 
 

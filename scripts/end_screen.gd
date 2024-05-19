@@ -15,4 +15,5 @@ func win_game(time : String):
 	$Time.text = "Time: " + time
 
 func _on_button_pressed():
+	# Emit a signal saying the restart button was pressed
 	reset_button_pressed.emit()
