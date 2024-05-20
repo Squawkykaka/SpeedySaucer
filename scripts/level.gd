@@ -1,3 +1,4 @@
+# A 2D Node with transform properties
 extends Node2D
 
 # the time elapsed since scene start.
@@ -20,8 +21,9 @@ func _process(delta: float) -> void:
 	if !is_stopped:
 		time_elapsed += delta
 	
+	# Manages the keybinds
+	keybind_manager()
 	
-
 func stop() -> void:
 	# makes the timer invisiible.
 	timer.visible = false
@@ -40,7 +42,6 @@ func _on_maze_body_exited(_body):
 	end_screen.visible = true
 	end_screen.lose_game()
 
-
 func _on_end_area_body_entered(_body):
 	# Setup the timer for display.
 	var winning_time = str(time_elapsed).pad_decimals(2)
@@ -54,7 +55,6 @@ func _on_end_area_body_entered(_body):
 	end_screen.win_game(winning_time)
 	end_screen.visible = true
 
-
 func _on_end_screen_reset_button_pressed():
 	# Restart the level.
 	get_tree().reload_current_scene()
@@ -63,3 +63,8 @@ func _on_end_screen_reset_button_pressed():
 # When the first movement key is pressed, start the timer.
 func _on_player_move_button_pressed():
 	is_stopped = false
+
+func keybind_manager():
+	if Input.is_action_just_pressed("restart_level"):
+		get_tree().reload_current_scene()
+	

@@ -28,10 +28,10 @@ script = ExtResource("1_n1yjg")
 
 [node name="Graphics" type="Node" parent="."]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Graphics"]
+[node name="BackgroundLayer" type="CanvasLayer" parent="Graphics"]
 layer = -1
 
-[node name="Background" type="TextureRect" parent="Graphics/CanvasLayer"]
+[node name="Background" type="TextureRect" parent="Graphics/BackgroundLayer"]
 z_index = -100
 anchors_preset = 15
 anchor_right = 1.0
@@ -78,14 +78,25 @@ text = "Tutorial:
 1. WASD For movement
 2. Get to the END Text
 3. You will be reset 
-if you leave the maze"
+if you completely leave the maze"
 metadata/_edit_use_anchors_ = true
 
 [node name="HUD" type="CanvasLayer" parent="Graphics"]
+offset = Vector2(-50, -50)
+transform = Transform2D(1, 0, 0, 1, -50, -50)
 
 [node name="Timer" type="Label" parent="Graphics/HUD"]
-offset_right = 40.0
-offset_bottom = 23.0
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -185.0
+offset_top = -138.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 101
+text = "N/A"
 script = SubResource("GDScript_0rqkh")
 
 [node name="Player" parent="." instance=ExtResource("2_7omxt")]
