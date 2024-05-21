@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://dpsfnh4hg5yrb"]
+
+[ext_resource type="Script" path="res://hud.gd" id="1_bet4h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jr85x"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.0705882, 0.27451, 0.2, 0.309804)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.831373, 0.623529, 0.627451, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m27vd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e3qrk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fxyei"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ptikn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d6kny"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qhhn2"]
+
+[node name="HUD" type="CanvasLayer"]
+offset = Vector2(-50, -50)
+transform = Transform2D(1, 0, 0, 1, -50, -50)
+script = ExtResource("1_bet4h")
+
+[node name="Timer" type="Label" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -185.0
+offset_top = -138.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 101
+text = "N/A"
+
+[node name="HighScore" type="ItemList" parent="."]
+anchors_preset = -1
+anchor_left = 0.078
+anchor_top = 0.12
+anchor_right = 0.078
+anchor_bottom = 0.12
+offset_left = 689.144
+offset_top = -19.76
+offset_right = 1102.14
+offset_bottom = 204.24
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/guide_color = Color(1, 1, 1, 1)
+theme_override_constants/h_separation = 100
+theme_override_constants/v_separation = 5
+theme_override_constants/icon_margin = 20
+theme_override_font_sizes/font_size = 31
+theme_override_styles/panel = SubResource("StyleBoxFlat_jr85x")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_m27vd")
+theme_override_styles/hovered = SubResource("StyleBoxEmpty_e3qrk")
+theme_override_styles/selected = SubResource("StyleBoxEmpty_fxyei")
+theme_override_styles/selected_focus = SubResource("StyleBoxEmpty_ptikn")
+theme_override_styles/cursor = SubResource("StyleBoxEmpty_d6kny")
+theme_override_styles/cursor_unfocused = SubResource("StyleBoxEmpty_qhhn2")
+item_count = 1
+icon_scale = 0.5
+item_0/text = "Aydin | Score: 1"
+item_0/selectable = false

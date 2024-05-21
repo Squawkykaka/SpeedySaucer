@@ -3,25 +3,12 @@
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_n1yjg"]
 [ext_resource type="Texture2D" uid="uid://d1ju1v1payd02" path="res://assets/purple.png" id="1_uxw2g"]
 [ext_resource type="PackedScene" uid="uid://c65hefip7vpiy" path="res://scenes/player.tscn" id="2_7omxt"]
+[ext_resource type="PackedScene" uid="uid://dpsfnh4hg5yrb" path="res://hud.tscn" id="3_k1gqn"]
 [ext_resource type="PackedScene" uid="uid://p6dqykcdqe8p" path="res://scenes/maze.tscn" id="4_d0dyy"]
 [ext_resource type="PackedScene" uid="uid://c7d2mtsfxi1r0" path="res://scenes/end_screen.tscn" id="5_cnmvd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ric6j"]
 size = Vector2(273, 336)
-
-[sub_resource type="GDScript" id="GDScript_0rqkh"]
-script/source = "extends Label
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
-"
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_n1yjg")
@@ -81,23 +68,7 @@ text = "Tutorial:
 if you completely leave the maze"
 metadata/_edit_use_anchors_ = true
 
-[node name="HUD" type="CanvasLayer" parent="Graphics"]
-offset = Vector2(-50, -50)
-transform = Transform2D(1, 0, 0, 1, -50, -50)
-
-[node name="Timer" type="Label" parent="Graphics/HUD"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -185.0
-offset_top = -138.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 101
-text = "N/A"
-script = SubResource("GDScript_0rqkh")
+[node name="HUD" parent="Graphics" instance=ExtResource("3_k1gqn")]
 
 [node name="Player" parent="." instance=ExtResource("2_7omxt")]
 z_index = 1

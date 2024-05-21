@@ -9,9 +9,14 @@ var is_stopped := true
 
 # Allows quick access to nodes
 @onready var timer = $Graphics/HUD/Timer
+@onready var hud = $Graphics/HUD
 @onready var player = $Player
 @onready var end_screen = $end_screen
 
+
+func _ready():
+	Global.save()
+	hud.addNewHighscore("Squawkykaka", 1.0)
 
 # runs every frame.
 func _process(delta: float) -> void:
@@ -26,7 +31,7 @@ func _process(delta: float) -> void:
 	
 func stop() -> void:
 	# makes the timer invisiible.
-	timer.visible = false
+	hud.visible = false
 	# stop the timer.
 	is_stopped = true
 
