@@ -15,8 +15,7 @@ var is_stopped := true
 
 
 func _ready():
-	Global.save()
-	hud.addNewHighscore("Squawkykaka", 1.0)
+	pass
 
 # runs every frame.
 func _process(delta: float) -> void:

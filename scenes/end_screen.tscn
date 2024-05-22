@@ -10,24 +10,51 @@ shader_parameter/amount = 2.174
 [node name="end_screen" type="CanvasLayer"]
 script = ExtResource("1_qpnsy")
 
-[node name="Blur" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_dweit")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Title" type="Label" parent="."]
+[node name="LineEdit" type="LineEdit" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -208.0
-offset_top = -248.0
-offset_right = 208.0
-offset_bottom = -127.0
+offset_left = -159.5
+offset_top = -22.5
+offset_right = 159.5
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubmitButton" type="Button" parent="LineEdit"]
+layout_mode = 0
+offset_left = 323.0
+offset_top = -1.0
+offset_right = 426.0
+offset_bottom = 46.0
+text = "Submit"
+
+[node name="Graphics" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Blur" type="ColorRect" parent="Graphics"]
+material = SubResource("ShaderMaterial_dweit")
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Graphics"]
+layout_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 237.0
+offset_top = 54.0
+offset_right = 875.0
+offset_bottom = 179.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 91
@@ -35,16 +62,16 @@ text = "Speedy Saucer"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Time" type="Label" parent="."]
-anchors_preset = 8
+[node name="Time" type="Label" parent="Graphics"]
+layout_mode = 2
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -208.0
-offset_top = -141.0
-offset_right = 208.0
-offset_bottom = -16.0
+offset_left = 348.0
+offset_top = 163.0
+offset_right = 764.0
+offset_bottom = 288.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 56
@@ -52,16 +79,16 @@ text = "Time: "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="State" type="Label" parent="."]
-anchors_preset = 8
+[node name="State" type="Label" parent="Graphics"]
+layout_mode = 2
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -208.0
-offset_top = 25.0
-offset_right = 208.0
-offset_bottom = 150.0
+offset_left = 348.0
+offset_top = 329.0
+offset_right = 764.0
+offset_bottom = 454.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 91
@@ -69,19 +96,20 @@ text = "You Win!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="."]
-anchors_preset = 8
+[node name="Button" type="Button" parent="Graphics"]
+layout_mode = 2
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = 193.0
-offset_right = 33.0
-offset_bottom = 224.0
+offset_left = 455.0
+offset_top = 470.0
+offset_right = 658.0
+offset_bottom = 555.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 56
 text = "Restart"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="LineEdit/SubmitButton" to="." method="_on_submit_button_pressed"]
+[connection signal="pressed" from="Graphics/Button" to="." method="_on_button_pressed"]

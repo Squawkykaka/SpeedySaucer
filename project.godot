@@ -22,10 +22,15 @@ buses/default_bus_layout=""
 [autoload]
 
 Global="*res://scripts/global.gd"
+SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
 
 [dotnet]
 
 project/assembly_name="Speedy Saucer"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/silent_wolf/plugin.cfg")
 
 [input]
 

@@ -1,23 +1,15 @@
 extends Node
 
-var save_data = {
-	"score": 0,
-	"name": "NAME"
-}
 
-func save():
-	var save_data = FileAccess.open("user://save_game.dat", FileAccess.WRITE)
-	save_data.store_var(save_data)
-	save_data.close()
-	
-func load():
-	if not FileAccess.file_exists("user://save_game.dat"):
-		save()
-		return
+func _ready():
+	SilentWolf.configure({	
+		"api_key": "IPOjNUIt6u4RSLpOQbszg9z5r83OR8eY9nGYUctf",
+		"game_id": "SpeedySaucer",
+		"log_level": 1,
+		"game_version": "1.0.0"
+	})
 
-	var save_data = FileAccess.open("user://save_game.dat", FileAccess.READ)
-	var data = save_data.get_var()
-	
-	save_data.score = data.score
-	save_data.name = data.name
-	return data
+	SilentWolf.configure_scores({
+		"open_scene_on_close": "res://scenes/end_screen.tscn"
+	})
+
